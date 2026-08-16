@@ -1,0 +1,28 @@
+name: kart-os
+options:
+  deploymentTarget:
+    macOS: "13.0"
+  bundleIdPrefix: sh.karthikeyan
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+targets:
+  kart-os:
+    type: application
+    platform: macOS
+    sources: [Sources/kart-os]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.kart-os
+        INFOPLIST_KEY_LSUIElement: true
+        GENERATE_INFOPLIST_FILE: true
+  kart-osTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [Tests/kart-osTests]
+    dependencies:
+      - target: kart-os
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.kart-osTests

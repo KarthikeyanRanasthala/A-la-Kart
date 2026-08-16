@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FC747C064E401F452BCFDFC /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325003BE0842CA787F0D8EF0 /* MenuController.swift */; };
+		56963FE01D86A162DE96ACF7 /* Port.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822A8E3F42AA99B05247EE5 /* Port.swift */; };
+		84A96EE445944E0585D13C67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29C483401549486783C1C8 /* AppDelegate.swift */; };
+		91F04ECE9AFFFD2DD3BE78E3 /* LsofParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0DE45884DAF8403F6875B /* LsofParserTests.swift */; };
+		CB7AC5EE5436C463B8A62A1A /* ProcessSignaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98946EF6757F61A6E609590D /* ProcessSignaler.swift */; };
+		D2A1EADC201B8061457E7858 /* ProcessSignalerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2691B276B39DC7897124FF9 /* ProcessSignalerTests.swift */; };
+		F31A0A54223F4C3A875AA261 /* LsofParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62A60C6CC1BF6D0629A9D8 /* LsofParser.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1A786D034620807CDAB7F52F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2870B85B042C4CF104FD5B39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCEC9235506D31A4B84B1C60;
+			remoteInfo = "kart-os";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		325003BE0842CA787F0D8EF0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		43C7F95B51C33B99F60AE414 /* kart-osTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kart-osTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A0DE45884DAF8403F6875B /* LsofParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LsofParserTests.swift; sourceTree = "<group>"; };
+		8822A8E3F42AA99B05247EE5 /* Port.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Port.swift; sourceTree = "<group>"; };
+		98946EF6757F61A6E609590D /* ProcessSignaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSignaler.swift; sourceTree = "<group>"; };
+		B57D05789A3EB2B8A34FB087 /* kart-os.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kart-os.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE29C483401549486783C1C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA62A60C6CC1BF6D0629A9D8 /* LsofParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LsofParser.swift; sourceTree = "<group>"; };
+		F2691B276B39DC7897124FF9 /* ProcessSignalerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSignalerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		8E345F7D5B496E8248B2585E /* kart-os */ = {
+			isa = PBXGroup;
+			children = (
+				CE29C483401549486783C1C8 /* AppDelegate.swift */,
+				EA62A60C6CC1BF6D0629A9D8 /* LsofParser.swift */,
+				325003BE0842CA787F0D8EF0 /* MenuController.swift */,
+				8822A8E3F42AA99B05247EE5 /* Port.swift */,
+				98946EF6757F61A6E609590D /* ProcessSignaler.swift */,
+			);
+			name = "kart-os";
+			path = "Sources/kart-os";
+			sourceTree = "<group>";
+		};
+		998E4A0EDAC9D85814672756 /* kart-osTests */ = {
+			isa = PBXGroup;
+			children = (
+				50A0DE45884DAF8403F6875B /* LsofParserTests.swift */,
+				F2691B276B39DC7897124FF9 /* ProcessSignalerTests.swift */,
+			);
+			name = "kart-osTests";
+			path = "Tests/kart-osTests";
+			sourceTree = "<group>";
+		};
+		D28DC7C55568BF36B43EB8EB = {
+			isa = PBXGroup;
+			children = (
+				8E345F7D5B496E8248B2585E /* kart-os */,
+				998E4A0EDAC9D85814672756 /* kart-osTests */,
+				E101321C2DED664A18A3D87C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E101321C2DED664A18A3D87C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B57D05789A3EB2B8A34FB087 /* kart-os.app */,
+				43C7F95B51C33B99F60AE414 /* kart-osTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA076224F5AFB54BB007349E /* kart-osTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B22BAA94AA8B5500E58DA7E1 /* Build configuration list for PBXNativeTarget "kart-osTests" */;
+			buildPhases = (
+				46BF5FDE75CB8AC17F07F010 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA9C25A4E983D1312AEAB73A /* PBXTargetDependency */,
+			);
+			name = "kart-osTests";
+			packageProductDependencies = (
+			);
+			productName = "kart-osTests";
+			productReference = 43C7F95B51C33B99F60AE414 /* kart-osTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FCEC9235506D31A4B84B1C60 /* kart-os */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 991D99968A5F51B364CA33FB /* Build configuration list for PBXNativeTarget "kart-os" */;
+			buildPhases = (
+				1B245DABEB817C9076874060 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "kart-os";
+			packageProductDependencies = (
+			);
+			productName = "kart-os";
+			productReference = B57D05789A3EB2B8A34FB087 /* kart-os.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2870B85B042C4CF104FD5B39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = C1829328FC8164879DE9EACC /* Build configuration list for PBXProject "kart-os" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D28DC7C55568BF36B43EB8EB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E101321C2DED664A18A3D87C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCEC9235506D31A4B84B1C60 /* kart-os */,
+				BA076224F5AFB54BB007349E /* kart-osTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B245DABEB817C9076874060 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A96EE445944E0585D13C67 /* AppDelegate.swift in Sources */,
+				F31A0A54223F4C3A875AA261 /* LsofParser.swift in Sources */,
+				1FC747C064E401F452BCFDFC /* MenuController.swift in Sources */,
+				56963FE01D86A162DE96ACF7 /* Port.swift in Sources */,
+				CB7AC5EE5436C463B8A62A1A /* ProcessSignaler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46BF5FDE75CB8AC17F07F010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F04ECE9AFFFD2DD3BE78E3 /* LsofParserTests.swift in Sources */,
+				D2A1EADC201B8061457E7858 /* ProcessSignalerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA9C25A4E983D1312AEAB73A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCEC9235506D31A4B84B1C60 /* kart-os */;
+			targetProxy = 1A786D034620807CDAB7F52F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		253C4E099C7865DA74604897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3DC572223D84F1DCB0BCBEC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.kart-os";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		498CCE9B78B3D3A722CA8E90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BBD7B36D81D31252014476EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.kart-os";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DF98E84EAAA53DB59F299976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.kart-osTests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kart-os.app/Contents/MacOS/kart-os";
+			};
+			name = Release;
+		};
+		ED3FDC9797F4C2C0294EB5CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.kart-osTests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kart-os.app/Contents/MacOS/kart-os";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		991D99968A5F51B364CA33FB /* Build configuration list for PBXNativeTarget "kart-os" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD7B36D81D31252014476EC /* Debug */,
+				3DC572223D84F1DCB0BCBEC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B22BAA94AA8B5500E58DA7E1 /* Build configuration list for PBXNativeTarget "kart-osTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED3FDC9797F4C2C0294EB5CF /* Debug */,
+				DF98E84EAAA53DB59F299976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C1829328FC8164879DE9EACC /* Build configuration list for PBXProject "kart-os" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				253C4E099C7865DA74604897 /* Debug */,
+				498CCE9B78B3D3A722CA8E90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2870B85B042C4CF104FD5B39 /* Project object */;
+}
