@@ -19,6 +19,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         receivesAppleEvents = true
     }
 
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        controller.showURLRoutingSettings()
+        return true
+    }
+
     func applicationWillTerminate(_ notification: Notification) {
         if receivesAppleEvents { NSAppleEventManager.shared().removeEventHandler(forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL)); receivesAppleEvents = false }
     }

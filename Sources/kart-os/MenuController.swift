@@ -198,12 +198,14 @@ final class MenuController: NSObject, NSMenuDelegate {
 
     deinit { if let configObserver { NotificationCenter.default.removeObserver(configObserver) } }
 
-    @objc private func openSettings() {
+    func showURLRoutingSettings() {
         if settingsController == nil { settingsController = SettingsWindowController(store: configStore) }
         settingsController?.showWindow(nil)
         settingsController?.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
+
+    @objc private func openSettings() { showURLRoutingSettings() }
 
     private final class Action {
         let port: Port
