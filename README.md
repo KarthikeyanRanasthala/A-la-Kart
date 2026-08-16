@@ -1,35 +1,83 @@
 # A la Kart
 
-Native AppKit-only macOS menu-bar utility. Current features include:
+A native, AppKit-only macOS menu-bar utility for inspecting local ports and routing web URLs to the right browser.
 
-- A port monitor backed by `/usr/sbin/lsof`, with SIGTERM and SIGKILL process actions.
-- Configurable HTTP/HTTPS routing that opens matching domains in specific installed browsers.
-- Versioned JSON configuration with full-config import and export.
+## Ports
 
-URL interception works after A la Kart is selected as the default web browser. Configure routing, the fallback browser, domain rules, and default-handler status from **URL Routing Settings…** in the menu-bar menu. The live configuration is stored at `~/Library/Application Support/A la Kart/config.json`.
+- Inspect listening TCP ports using `/usr/sbin/lsof`.
+- View details about the process holding a port.
+- Send SIGTERM or SIGKILL to a process, with confirmation before the action.
 
-## Build and run
+## URL Routing
 
-Requires Xcode and [XcodeGen](https://github.com/yonaskolb/XcodeGen). Regenerate the checked-in project after changing `project.yml`:
+- Route HTTP and HTTPS URLs by hostname or subdomain to installed browsers.
+- Set a fallback browser for URLs that do not match a rule.
+- Enable, disable, and reorder routing rules.
+- Import and export the complete configuration as JSON.
+- View default-handler status and open the relevant macOS settings.
+
+URL routing works after A la Kart is selected manually as the default web browser. Configure the fallback browser and rules from **URL Routing Settings…** in the menu-bar menu.
+
+## Requirements
+
+- macOS 13 or later
+- Apple Silicon Mac (the current Release build is arm64-only)
+- Xcode and [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+
+Product/bundle ID: `sh.karthikeyan.a-la-kart`
+
+## Quick start from source
+
+From the repository root, generate the Xcode project and run the local installer:
 
 ```sh
-/opt/homebrew/bin/xcodegen generate
-xcodebuild -project A-la-Kart.xcodeproj -scheme A-la-Kart -configuration Debug -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
-open "build/Build/Products/Debug/A la Kart.app"
-```
-
-Tests:
-
-```sh
-xcodebuild -project A-la-Kart.xcodeproj -scheme A-la-Kart -configuration Debug -derivedDataPath build CODE_SIGNING_ALLOWED=NO test
-```
-
-## Install locally as a browser candidate
-
-LaunchServices is more reliable when A la Kart runs from a stable Applications location. The local installer builds the checked-in project, copies the unsigned app to `$HOME/Applications`, registers it, and launches it. It never changes the default browser:
-
-```sh
+xcodegen generate
 ./scripts/install-local.sh
 ```
 
-After the script completes, close and reopen **System Settings**, open **Desktop & Dock → Default web browser**, and manually select **A la Kart** again (the bundle ID changed, so it is not selected automatically). Then configure the fallback browser and URL rules from **URL Routing Settings…**. The installed app must continue running from `$HOME/Applications/A la Kart.app` for LaunchServices to use that registration.
+The installer builds Release, installs `A la Kart.app` to `~/Applications/A la Kart.app`, registers it with LaunchServices, and launches it. It does not change your default browser.
+
+To enable URL interception, open **System Settings → Desktop & Dock → Default web browser** and select **A la Kart**. You may need to close and reopen System Settings before it appears. Then choose a fallback browser and configure rules in **URL Routing Settings…**. Keep the installed app running from `~/Applications/A la Kart.app` so LaunchServices continues to use that registration.
+
+## Unsigned local build
+
+The local installer produces an unsigned, unnotarized app. Because you compiled it locally, macOS may still ask for confirmation the first time it opens. If Gatekeeper blocks it, use Finder’s **Open** command on the app (or the option provided in **System Settings → Privacy & Security**) to approve this specific app. Do not disable Gatekeeper globally.
+
+## Configuration
+
+The live configuration is stored locally at:
+
+```text
+~/Library/Application Support/A la Kart/config.json
+```
+
+Use the import and export controls in URL Routing Settings to move or back up the full JSON configuration.
+
+## Development
+
+The primary build is Release:
+
+```sh
+xcodebuild -project A-la-Kart.xcodeproj -scheme A-la-Kart \
+  -configuration Release -derivedDataPath build \
+  CODE_SIGNING_ALLOWED=NO build
+open "build/Build/Products/Release/A la Kart.app"
+```
+
+Tests use Debug:
+
+```sh
+xcodebuild -project A-la-Kart.xcodeproj -scheme A-la-Kart \
+  -configuration Debug -derivedDataPath build \
+  CODE_SIGNING_ALLOWED=NO test
+```
+
+Regenerate `A-la-Kart.xcodeproj` with `xcodegen generate` after changing `project.yml`.
+
+## Privacy and security
+
+A la Kart keeps its configuration on the local Mac and has no telemetry or network backend. When routing a URL, it naturally asks the selected browser to open that URL; the browser’s own handling and network activity still apply.
+
+## Project status and support
+
+A la Kart is currently a macOS-only, native AppKit project. It does not support Intel Macs in its current Release build. The app is distributed here as source for local compilation and installation; packaged, signed releases are not currently provided.

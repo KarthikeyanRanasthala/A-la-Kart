@@ -21,6 +21,9 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_FILE: Sources/A-la-Kart/Info.plist
         GENERATE_INFOPLIST_FILE: false
+      configs:
+        Release:
+          ARCHS: arm64
   A-la-KartTests:
     type: bundle.unit-test
     platform: macOS

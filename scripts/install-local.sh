@@ -3,14 +3,14 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 derived_data="$repo_dir/.build-local"
-built_app="$derived_data/Build/Products/Debug/A la Kart.app"
+built_app="$derived_data/Build/Products/Release/A la Kart.app"
 applications_dir="$HOME/Applications"
 install_path="$applications_dir/A la Kart.app"
 staging_path="$applications_dir/.A la Kart.app.staging.$$"
 lsregister="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
 
 mkdir -p "$applications_dir"
-xcodebuild -project "$repo_dir/A-la-Kart.xcodeproj" -scheme A-la-Kart -configuration Debug \
+xcodebuild -project "$repo_dir/A-la-Kart.xcodeproj" -scheme A-la-Kart -configuration Release \
   -derivedDataPath "$derived_data" CODE_SIGNING_ALLOWED=NO build
 
 if [[ ! -d "$built_app" ]]; then
