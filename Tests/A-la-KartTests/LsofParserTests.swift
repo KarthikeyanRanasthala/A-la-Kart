@@ -1,5 +1,5 @@
 import XCTest
-@testable import kart_os
+@testable import A_la_Kart
 
 final class LsofParserTests: XCTestCase {
     func testParsesRealStyleListeningTCPAndUDPAndSorts() {

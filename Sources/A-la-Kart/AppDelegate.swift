@@ -10,8 +10,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem.isVisible = true
-        statusItem.button?.title = "K"
-        statusItem.button?.toolTip = "kart-os ports"
+        statusItem.button?.image = MenuBarIcon.image()
+        statusItem.button?.toolTip = "A la Kart"
         configStore = ConfigStore()
         controller = MenuController(statusItem: statusItem, configStore: configStore)
         statusItem.menu = controller.menu
@@ -35,7 +35,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func route(_ urls: [URL]) {
-        let router = URLRouter(config: configStore.config, ownBundleIdentifier: Bundle.main.bundleIdentifier ?? "sh.karthikeyan.kart-os")
+        let router = URLRouter(config: configStore.config, ownBundleIdentifier: Bundle.main.bundleIdentifier ?? "sh.karthikeyan.a-la-kart")
         let opener = WorkspaceBrowserOpener()
         for url in urls {
             let result = router.route(url)
@@ -58,7 +58,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-enum KartOSApplication {
+enum ALaKartApplication {
     static func main() {
         let application = NSApplication.shared
         let delegate = AppDelegate()

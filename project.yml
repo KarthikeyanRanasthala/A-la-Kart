@@ -1,4 +1,4 @@
-name: kart-os
+name: A-la-Kart
 options:
   deploymentTarget:
     macOS: "13.0"
@@ -8,21 +8,35 @@ settings:
     SWIFT_VERSION: "5.0"
     MACOSX_DEPLOYMENT_TARGET: "13.0"
 targets:
-  kart-os:
+  A-la-Kart:
     type: application
+    productName: A la Kart
     platform: macOS
-    sources: [Sources/kart-os]
+    sources: [Sources/A-la-Kart]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.kart-os
-        INFOPLIST_FILE: Sources/kart-os/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.a-la-kart
+        PRODUCT_NAME: A la Kart
+        SWIFT_MODULE_NAME: A_la_Kart
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: Sources/A-la-Kart/Info.plist
         GENERATE_INFOPLIST_FILE: false
-  kart-osTests:
+  A-la-KartTests:
     type: bundle.unit-test
     platform: macOS
-    sources: [Tests/kart-osTests]
+    sources: [Tests/A-la-KartTests]
     dependencies:
-      - target: kart-os
+      - target: A-la-Kart
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.kart-osTests
+        PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.a-la-kart-tests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/A la Kart.app/Contents/MacOS/A la Kart"
+schemes:
+  A-la-Kart:
+    build:
+      targets:
+        A-la-Kart: all
+        A-la-KartTests: [test]
+    test:
+      targets:
+        - A-la-KartTests

@@ -1,5 +1,5 @@
 import XCTest
-@testable import kart_os
+@testable import A_la_Kart
 
 final class ProcessSignalerTests: XCTestCase {
     func testPermissionCheckUsesSignalZeroForExistingProcess() throws {

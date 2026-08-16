@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F0DA9DA717119B79BAEB7D2 /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E29173544473909944CB5E /* MenuBarIcon.swift */; };
+		337522F8028B8C01843629F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C0256EF51ACDAAE155D6A2 /* Assets.xcassets */; };
+		36CF164014563DFFA3F17AC9 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AA3C3CB87E63364A1EEEB /* MenuController.swift */; };
+		433537E46E8C67A1306E5A62 /* Port.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051F190D511F0E98B52D34E /* Port.swift */; };
+		4623ACFEBBE6F7B2B1154625 /* URLRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7C61924AD71AFA939532A /* URLRouting.swift */; };
+		5B7D19F4B53DC649312478E4 /* LsofParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1466BDAC432967BACF5D78 /* LsofParserTests.swift */; };
+		7800DE43C38D6F34288A8162 /* LsofParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C940BA10E1468F3CD4C63 /* LsofParser.swift */; };
+		A838C60F94A3D40C61070FC7 /* ProcessSignalerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F0263B0FBCAE19E258D935 /* ProcessSignalerTests.swift */; };
+		AD4637FA73EE35C4C24E60C8 /* URLRoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955ABBED4C94099A30276792 /* URLRoutingTests.swift */; };
+		EE70E23F97005624ACEB3D9E /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50B5FEDB4FFD10D78FF19E /* SettingsWindowController.swift */; };
+		EE9D83BC845BD19ECDEF5891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03527DABFA08AB9BE08DA6DD /* AppDelegate.swift */; };
+		F61865BEFFE18F41A35356A8 /* ProcessSignaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34227882FD9F3FF4F5DD5859 /* ProcessSignaler.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E62A74DB0AD8BFE44A52F6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 688F9A5662D6478D17722E59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3025718427CF853A9863F67A;
+			remoteInfo = "A-la-Kart";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03527DABFA08AB9BE08DA6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10E29173544473909944CB5E /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
+		34227882FD9F3FF4F5DD5859 /* ProcessSignaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSignaler.swift; sourceTree = "<group>"; };
+		476AA3C3CB87E63364A1EEEB /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		5051F190D511F0E98B52D34E /* Port.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Port.swift; sourceTree = "<group>"; };
+		6C50B5FEDB4FFD10D78FF19E /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		82E7C61924AD71AFA939532A /* URLRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouting.swift; sourceTree = "<group>"; };
+		955ABBED4C94099A30276792 /* URLRoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRoutingTests.swift; sourceTree = "<group>"; };
+		A5F6EA69AA3D05C8C312DF96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B0F0263B0FBCAE19E258D935 /* ProcessSignalerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSignalerTests.swift; sourceTree = "<group>"; };
+		DE1466BDAC432967BACF5D78 /* LsofParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LsofParserTests.swift; sourceTree = "<group>"; };
+		E3C0256EF51ACDAAE155D6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9647B48DC3A6727DBE609A8 /* A-la-KartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "A-la-KartTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE36CF74A011E0B55391C88 /* A la Kart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A la Kart.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3C940BA10E1468F3CD4C63 /* LsofParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LsofParser.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		17F69BF3408B8AC7F2DD6AC0 = {
+			isa = PBXGroup;
+			children = (
+				5D3755F33C12A2D1F2ECF89B /* A-la-Kart */,
+				5D5138C5DA663EA5B772C497 /* A-la-KartTests */,
+				2B4657E820932483EDDCE120 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B4657E820932483EDDCE120 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFE36CF74A011E0B55391C88 /* A la Kart.app */,
+				E9647B48DC3A6727DBE609A8 /* A-la-KartTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D3755F33C12A2D1F2ECF89B /* A-la-Kart */ = {
+			isa = PBXGroup;
+			children = (
+				03527DABFA08AB9BE08DA6DD /* AppDelegate.swift */,
+				E3C0256EF51ACDAAE155D6A2 /* Assets.xcassets */,
+				A5F6EA69AA3D05C8C312DF96 /* Info.plist */,
+				FD3C940BA10E1468F3CD4C63 /* LsofParser.swift */,
+				10E29173544473909944CB5E /* MenuBarIcon.swift */,
+				476AA3C3CB87E63364A1EEEB /* MenuController.swift */,
+				5051F190D511F0E98B52D34E /* Port.swift */,
+				34227882FD9F3FF4F5DD5859 /* ProcessSignaler.swift */,
+				6C50B5FEDB4FFD10D78FF19E /* SettingsWindowController.swift */,
+				82E7C61924AD71AFA939532A /* URLRouting.swift */,
+			);
+			name = "A-la-Kart";
+			path = "Sources/A-la-Kart";
+			sourceTree = "<group>";
+		};
+		5D5138C5DA663EA5B772C497 /* A-la-KartTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE1466BDAC432967BACF5D78 /* LsofParserTests.swift */,
+				B0F0263B0FBCAE19E258D935 /* ProcessSignalerTests.swift */,
+				955ABBED4C94099A30276792 /* URLRoutingTests.swift */,
+			);
+			name = "A-la-KartTests";
+			path = "Tests/A-la-KartTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3025718427CF853A9863F67A /* A-la-Kart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D17D5CDE324E41D673F929A6 /* Build configuration list for PBXNativeTarget "A-la-Kart" */;
+			buildPhases = (
+				8F075FB3432DCB78790769CD /* Sources */,
+				2F9F1E1F0C581FE03F4B6E5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "A-la-Kart";
+			packageProductDependencies = (
+			);
+			productName = "A-la-Kart";
+			productReference = EFE36CF74A011E0B55391C88 /* A la Kart.app */;
+			productType = "com.apple.product-type.application";
+		};
+		581A74AD40E2ED61E3F62EEB /* A-la-KartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CAC88B4BBB7D91F64EA1CB /* Build configuration list for PBXNativeTarget "A-la-KartTests" */;
+			buildPhases = (
+				A17A4EF75D265527EDED3FF6 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A50CD4DBC3810A295C7919F5 /* PBXTargetDependency */,
+			);
+			name = "A-la-KartTests";
+			packageProductDependencies = (
+			);
+			productName = "A-la-KartTests";
+			productReference = E9647B48DC3A6727DBE609A8 /* A-la-KartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		688F9A5662D6478D17722E59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = C601A2598F7CA8C4EC4773C4 /* Build configuration list for PBXProject "A-la-Kart" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 17F69BF3408B8AC7F2DD6AC0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2B4657E820932483EDDCE120 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3025718427CF853A9863F67A /* A-la-Kart */,
+				581A74AD40E2ED61E3F62EEB /* A-la-KartTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F9F1E1F0C581FE03F4B6E5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				337522F8028B8C01843629F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F075FB3432DCB78790769CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE9D83BC845BD19ECDEF5891 /* AppDelegate.swift in Sources */,
+				7800DE43C38D6F34288A8162 /* LsofParser.swift in Sources */,
+				0F0DA9DA717119B79BAEB7D2 /* MenuBarIcon.swift in Sources */,
+				36CF164014563DFFA3F17AC9 /* MenuController.swift in Sources */,
+				433537E46E8C67A1306E5A62 /* Port.swift in Sources */,
+				F61865BEFFE18F41A35356A8 /* ProcessSignaler.swift in Sources */,
+				EE70E23F97005624ACEB3D9E /* SettingsWindowController.swift in Sources */,
+				4623ACFEBBE6F7B2B1154625 /* URLRouting.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17A4EF75D265527EDED3FF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7D19F4B53DC649312478E4 /* LsofParserTests.swift in Sources */,
+				A838C60F94A3D40C61070FC7 /* ProcessSignalerTests.swift in Sources */,
+				AD4637FA73EE35C4C24E60C8 /* URLRoutingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A50CD4DBC3810A295C7919F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3025718427CF853A9863F67A /* A-la-Kart */;
+			targetProxy = 8E62A74DB0AD8BFE44A52F6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07142C475EAA698666A0F0A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.a-la-kart-tests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/A la Kart.app/Contents/MacOS/A la Kart";
+			};
+			name = Debug;
+		};
+		3656FD4537A79C3B4B5FFC0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Sources/A-la-Kart/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.a-la-kart";
+				PRODUCT_NAME = "A la Kart";
+				SDKROOT = macosx;
+				SWIFT_MODULE_NAME = A_la_Kart;
+			};
+			name = Release;
+		};
+		A29DE8E8F6E640E77486DE0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Sources/A-la-Kart/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.a-la-kart";
+				PRODUCT_NAME = "A la Kart";
+				SDKROOT = macosx;
+				SWIFT_MODULE_NAME = A_la_Kart;
+			};
+			name = Debug;
+		};
+		D2A38B2C816FC07F18F5422E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DCF146ABC1BC9256206F8810 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.karthikeyan.a-la-kart-tests";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/A la Kart.app/Contents/MacOS/A la Kart";
+			};
+			name = Release;
+		};
+		EF916495024267947C9026AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3CAC88B4BBB7D91F64EA1CB /* Build configuration list for PBXNativeTarget "A-la-KartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07142C475EAA698666A0F0A8 /* Debug */,
+				DCF146ABC1BC9256206F8810 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C601A2598F7CA8C4EC4773C4 /* Build configuration list for PBXProject "A-la-Kart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2A38B2C816FC07F18F5422E /* Debug */,
+				EF916495024267947C9026AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D17D5CDE324E41D673F929A6 /* Build configuration list for PBXNativeTarget "A-la-Kart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A29DE8E8F6E640E77486DE0D /* Debug */,
+				3656FD4537A79C3B4B5FFC0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 688F9A5662D6478D17722E59 /* Project object */;
+}

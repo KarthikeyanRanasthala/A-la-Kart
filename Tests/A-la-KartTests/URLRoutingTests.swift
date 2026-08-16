@@ -1,21 +1,21 @@
 import XCTest
-@testable import kart_os
+@testable import A_la_Kart
 
 final class URLRoutingTests: XCTestCase {
     private let browser = "com.example.Browser"
     func testConfigRoundTripAndValidation() throws {
-        var config = KartOSConfig(); config.ports.confirmBeforeKilling = false; config.urlRouting.fallbackBrowserBundleIdentifier = browser; config.urlRouting.rules = [.init(host: " X.COM. ", browserBundleIdentifier: browser)]
-        let data = try JSONEncoder().encode(config); let decoded = try JSONDecoder().decode(KartOSConfig.self, from: data).validated()
+        var config = ALaKartConfig(); config.ports.confirmBeforeKilling = false; config.urlRouting.fallbackBrowserBundleIdentifier = browser; config.urlRouting.rules = [.init(host: " X.COM. ", browserBundleIdentifier: browser)]
+        let data = try JSONEncoder().encode(config); let decoded = try JSONDecoder().decode(ALaKartConfig.self, from: data).validated()
         XCTAssertEqual(decoded.ports.confirmBeforeKilling, false); XCTAssertEqual(decoded.urlRouting.rules[0].host, "x.com")
     }
     func testRejectsFutureSchemaAndInvalidOrDuplicateRules() {
-        XCTAssertThrowsError(try ({ var c = KartOSConfig(); c.schemaVersion = 2; return try c.validated() })())
-        XCTAssertThrowsError(try ({ var c = KartOSConfig(); c.schemaVersion = 0; return try c.validated() })())
-        XCTAssertThrowsError(try ({ var c = KartOSConfig(); c.urlRouting.rules = [.init(host: "https://x.com", browserBundleIdentifier: browser)]; return try c.validated() })())
-        XCTAssertThrowsError(try ({ var c = KartOSConfig(); c.urlRouting.rules = [.init(host: "x.com", browserBundleIdentifier: browser), .init(host: " X.COM ", browserBundleIdentifier: browser)]; return try c.validated() })())
+        XCTAssertThrowsError(try ({ var c = ALaKartConfig(); c.schemaVersion = 2; return try c.validated() })())
+        XCTAssertThrowsError(try ({ var c = ALaKartConfig(); c.schemaVersion = 0; return try c.validated() })())
+        XCTAssertThrowsError(try ({ var c = ALaKartConfig(); c.urlRouting.rules = [.init(host: "https://x.com", browserBundleIdentifier: browser)]; return try c.validated() })())
+        XCTAssertThrowsError(try ({ var c = ALaKartConfig(); c.urlRouting.rules = [.init(host: "x.com", browserBundleIdentifier: browser), .init(host: " X.COM ", browserBundleIdentifier: browser)]; return try c.validated() })())
     }
     func testExactSubdomainDisabledAndFirstMatch() throws {
-        var c = KartOSConfig(); c.urlRouting.rules = [.init(host: "example.com", includeSubdomains: true, browserBundleIdentifier: "broad"), .init(host: "child.example.com", browserBundleIdentifier: "exact")]
+        var c = ALaKartConfig(); c.urlRouting.rules = [.init(host: "example.com", includeSubdomains: true, browserBundleIdentifier: "broad"), .init(host: "child.example.com", browserBundleIdentifier: "exact")]
         let router = URLRouter(config: try c.validated(), ownBundleIdentifier: "self")
         XCTAssertEqual(router.route(URL(string: "https://child.example.com")!), .browser("broad"))
         c.urlRouting.rules.reverse()
@@ -26,7 +26,7 @@ final class URLRoutingTests: XCTestCase {
         XCTAssertEqual(URLRouter(config: disabled, ownBundleIdentifier: "self").route(URL(string: "https://child.example.com")!), .fallback("fallback"))
     }
     func testFallbackAndRecursionProtection() {
-        var c = KartOSConfig(); c.urlRouting.fallbackBrowserBundleIdentifier = browser
+        var c = ALaKartConfig(); c.urlRouting.fallbackBrowserBundleIdentifier = browser
         let router = URLRouter(config: c, ownBundleIdentifier: "self")
         XCTAssertEqual(router.route(URL(string: "https://unknown.test/path")!), .fallback(browser))
         c.urlRouting.fallbackBrowserBundleIdentifier = "self"
@@ -37,7 +37,7 @@ final class URLRoutingTests: XCTestCase {
     }
 
     func testConfigReplacementDoesNotMutateWhenPersistenceFails() {
-        let store = ConfigStore(fileURL: URL(fileURLWithPath: "/dev/null/kart-os-config.json"))
+        let store = ConfigStore(fileURL: URL(fileURLWithPath: "/dev/null/a-la-kart-config.json"))
         let original = store.config
         var candidate = original
         candidate.ports.confirmBeforeKilling = false

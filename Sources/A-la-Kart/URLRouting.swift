@@ -1,7 +1,7 @@
 import AppKit
 import CoreServices
 
-struct KartOSConfig: Codable, Equatable {
+struct ALaKartConfig: Codable, Equatable {
     static let currentSchemaVersion = 1
     var schemaVersion: Int = 1
     var ports = PortsConfig()
@@ -21,7 +21,7 @@ struct KartOSConfig: Codable, Equatable {
         var id = UUID()
     }
 
-    func validated() throws -> KartOSConfig {
+    func validated() throws -> ALaKartConfig {
         guard schemaVersion == Self.currentSchemaVersion else { throw ConfigError.unsupportedSchema }
         var copy = self
         var hosts = Set<String>()
@@ -39,7 +39,7 @@ struct KartOSConfig: Codable, Equatable {
 }
 
 enum ConfigError: LocalizedError { case unsupportedSchema, duplicateHost, invalidHost, invalidBrowser
-    var errorDescription: String? { switch self { case .unsupportedSchema: return "This configuration was created by a newer version of kart-os."; case .duplicateHost: return "Rules contain a duplicate host."; case .invalidHost: return "Enter a valid hostname without a scheme or path."; case .invalidBrowser: return "The selected browser is invalid." } }
+    var errorDescription: String? { switch self { case .unsupportedSchema: return "This configuration was created by a newer version of A la Kart."; case .duplicateHost: return "Rules contain a duplicate host."; case .invalidHost: return "Enter a valid hostname without a scheme or path."; case .invalidBrowser: return "The selected browser is invalid." } }
 }
 
 enum Hostname {
@@ -58,22 +58,23 @@ enum Hostname {
 }
 
 final class ConfigStore {
-    static let didChange = Notification.Name("KartOSConfigStoreDidChange")
-    private(set) var config: KartOSConfig
+    static let didChange = Notification.Name("ALaKartConfigStoreDidChange")
+    private(set) var config: ALaKartConfig
     let fileURL: URL
-    init(fileURL: URL? = nil, defaults: UserDefaults = .standard) {
-        self.fileURL = fileURL ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("kart-os/config.json")
-        if let data = try? Data(contentsOf: self.fileURL), let decoded = try? JSONDecoder().decode(KartOSConfig.self, from: data), let valid = try? decoded.validated() { config = valid }
-        else { config = KartOSConfig(); if let old = defaults.object(forKey: "confirmBeforeKilling") as? Bool { config.ports.confirmBeforeKilling = old }; try? save(config) }
+    init(fileURL: URL? = nil) {
+        let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        self.fileURL = fileURL ?? support.appendingPathComponent("A la Kart/config.json")
+        if let data = try? Data(contentsOf: self.fileURL), let decoded = try? JSONDecoder().decode(ALaKartConfig.self, from: data), let valid = try? decoded.validated() { config = valid }
+        else { config = ALaKartConfig(); try? save(config) }
     }
-    func replace(_ value: KartOSConfig) throws {
+    func replace(_ value: ALaKartConfig) throws {
         let candidate = try value.validated()
         try save(candidate)
         config = candidate
         NotificationCenter.default.post(name: Self.didChange, object: self)
     }
     func encoded() throws -> Data { let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]; return try encoder.encode(config) }
-    private func save(_ candidate: KartOSConfig) throws { let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]; let data = try encoder.encode(candidate); let dir = fileURL.deletingLastPathComponent(); try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true); let temp = dir.appendingPathComponent(".config-\(UUID().uuidString)"); try data.write(to: temp, options: .atomic); if FileManager.default.fileExists(atPath: fileURL.path) { _ = try FileManager.default.replaceItemAt(fileURL, withItemAt: temp) } else { try FileManager.default.moveItem(at: temp, to: fileURL) } }
+    private func save(_ candidate: ALaKartConfig) throws { let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]; let data = try encoder.encode(candidate); let dir = fileURL.deletingLastPathComponent(); try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true); let temp = dir.appendingPathComponent(".config-\(UUID().uuidString)"); try data.write(to: temp, options: .atomic); if FileManager.default.fileExists(atPath: fileURL.path) { _ = try FileManager.default.replaceItemAt(fileURL, withItemAt: temp) } else { try FileManager.default.moveItem(at: temp, to: fileURL) } }
 }
 
 protocol BrowserOpening { func open(_ url: URL, in bundleIdentifier: String) -> Bool }
@@ -83,7 +84,7 @@ final class WorkspaceBrowserOpener: BrowserOpening {
 
 enum RouteResult: Equatable { case browser(String), fallback(String), nonWeb, noRoute }
 struct URLRouter {
-    let config: KartOSConfig
+    let config: ALaKartConfig
     let ownBundleIdentifier: String
     func route(_ url: URL) -> RouteResult {
         guard ["http", "https"].contains(url.scheme?.lowercased() ?? "") else { return .nonWeb }
@@ -131,7 +132,7 @@ final class BrowserDiscovery {
 
 final class DefaultHandlerManager {
     let bundleIdentifier: String
-    init(bundleIdentifier: String = Bundle.main.bundleIdentifier ?? "sh.karthikeyan.kart-os") { self.bundleIdentifier = bundleIdentifier }
+    init(bundleIdentifier: String = Bundle.main.bundleIdentifier ?? "sh.karthikeyan.a-la-kart") { self.bundleIdentifier = bundleIdentifier }
     func handler(for scheme: String) -> String? { LSCopyDefaultHandlerForURLScheme(scheme as CFString)?.takeRetainedValue() as String? }
     var ownsBoth: Bool { handler(for: "http") == bundleIdentifier && handler(for: "https") == bundleIdentifier }
     func requestDefaultHandlers() {

@@ -20,8 +20,8 @@ final class SettingsWindowController: NSWindowController, NSTableViewDataSource,
     private var defaultHandlerTimer: Timer?
     private var defaultHandlerChecks = 0
     private var hasPositionedWindow = false
-    private var rules: [KartOSConfig.Rule] { store.config.urlRouting.rules }
-    private let noFallbackID = "__kart_os_no_fallback__"
+    private var rules: [ALaKartConfig.Rule] { store.config.urlRouting.rules }
+    private let noFallbackID = "__a_la_kart_no_fallback__"
 
     init(store: ConfigStore) {
         self.store = store
@@ -154,13 +154,13 @@ final class SettingsWindowController: NSWindowController, NSTableViewDataSource,
             if fallback.itemArray.first(where: { $0.representedObject as? String == id }) == nil { fallback.addItem(withTitle: "Unavailable: \(id)"); fallback.lastItem?.representedObject = id }
             if let index = fallback.itemArray.firstIndex(where: { $0.representedObject as? String == id }) { fallback.selectItem(at: index) }
         } else { fallback.selectItem(at: 0) }
-        status.stringValue = handler.ownsBoth ? "Default handler: kart-os (HTTP + HTTPS)" : "Not the default handler for both HTTP and HTTPS"
+        status.stringValue = handler.ownsBoth ? "Default handler: A la Kart (HTTP + HTTPS)" : "Not the default handler for both HTTP and HTTPS"
         statusIcon.image = NSImage(systemSymbolName: handler.ownsBoth ? "checkmark.circle.fill" : "exclamationmark.circle.fill", accessibilityDescription: handler.ownsBoth ? "Default handler" : "Not the default handler")
         statusIcon.contentTintColor = handler.ownsBoth ? .systemGreen : .systemOrange
         table.reloadData(); emptyState.isHidden = !rules.isEmpty; updateRuleButtonStates()
     }
 
-    private func save(_ update: (inout KartOSConfig) -> Void) { var value = store.config; update(&value); do { try store.replace(value); reload() } catch { alert(error.localizedDescription) } }
+    private func save(_ update: (inout ALaKartConfig) -> Void) { var value = store.config; update(&value); do { try store.replace(value); reload() } catch { alert(error.localizedDescription) } }
     func numberOfRows(in tableView: NSTableView) -> Int { rules.count }
     func tableViewSelectionDidChange(_ notification: Notification) { updateRuleButtonStates() }
     private func updateRuleButtonStates() { let i = table.selectedRow; let selected = i >= 0 && i < rules.count; editButton.isEnabled = selected; removeButton.isEnabled = selected; toggleButton.isEnabled = selected; moveUpButton.isEnabled = selected && i > 0; moveDownButton.isEnabled = selected && i < rules.count - 1; toggleButton.title = selected && rules[i].enabled ? "Disable" : "Enable" }
@@ -189,14 +189,14 @@ final class SettingsWindowController: NSWindowController, NSTableViewDataSource,
         NSLayoutConstraint.activate([hostLabel.topAnchor.constraint(equalTo: editor.topAnchor), hostLabel.leadingAnchor.constraint(equalTo: editor.leadingAnchor), hostLabel.trailingAnchor.constraint(equalTo: editor.trailingAnchor), host.topAnchor.constraint(equalTo: hostLabel.bottomAnchor, constant: 6), host.leadingAnchor.constraint(equalTo: editor.leadingAnchor), host.trailingAnchor.constraint(equalTo: editor.trailingAnchor), sub.topAnchor.constraint(equalTo: host.bottomAnchor, constant: 10), sub.leadingAnchor.constraint(equalTo: editor.leadingAnchor), popup.topAnchor.constraint(equalTo: sub.bottomAnchor, constant: 8), popup.leadingAnchor.constraint(equalTo: editor.leadingAnchor), popup.trailingAnchor.constraint(equalTo: editor.trailingAnchor), popup.bottomAnchor.constraint(equalTo: editor.bottomAnchor)])
         let alert = NSAlert(); alert.messageText = index == nil ? "Add URL Rule" : "Edit URL Rule"; alert.informativeText = "Choose which browser should open this domain."; alert.accessoryView = editor; alert.addButton(withTitle: "Save"); alert.addButton(withTitle: "Cancel"); alert.window.initialFirstResponder = host
         guard alert.runModal() == .alertFirstButtonReturn else { return }; guard let normalized = try? Hostname.normalize(host.stringValue) else { self.alert("Enter a valid hostname without a scheme or path."); return }; guard let browserID = popup.selectedItem?.representedObject as? String, !browserID.isEmpty else { self.alert("Select an installed browser for this rule."); return }
-        save { config in if let i = index { config.urlRouting.rules[i] = KartOSConfig.Rule(host: normalized, includeSubdomains: sub.state == .on, browserBundleIdentifier: browserID, enabled: config.urlRouting.rules[i].enabled, id: config.urlRouting.rules[i].id) } else { config.urlRouting.rules.append(KartOSConfig.Rule(host: normalized, includeSubdomains: sub.state == .on, browserBundleIdentifier: browserID)) } }
+        save { config in if let i = index { config.urlRouting.rules[i] = ALaKartConfig.Rule(host: normalized, includeSubdomains: sub.state == .on, browserBundleIdentifier: browserID, enabled: config.urlRouting.rules[i].enabled, id: config.urlRouting.rules[i].id) } else { config.urlRouting.rules.append(ALaKartConfig.Rule(host: normalized, includeSubdomains: sub.state == .on, browserBundleIdentifier: browserID)) } }
     }
 
     @objc private func removeRule() { guard table.selectedRow >= 0 else { return }; save { $0.urlRouting.rules.remove(at: table.selectedRow) } }
     @objc private func toggleRule() { guard table.selectedRow >= 0 else { return }; save { $0.urlRouting.rules[table.selectedRow].enabled.toggle() } }
     @objc private func moveRuleUp() { move(-1) }; @objc private func moveRuleDown() { move(1) }
     private func move(_ delta: Int) { let i = table.selectedRow, j = i + delta; guard i >= 0, j >= 0, j < rules.count else { return }; save { $0.urlRouting.rules.swapAt(i, j) }; table.selectRowIndexes(IndexSet(integer: j), byExtendingSelection: false) }
-    @objc private func exportConfig() { let panel = NSSavePanel(); panel.nameFieldStringValue = "kart-os-config.json"; guard panel.runModal() == .OK, let url = panel.url else { return }; do { try store.encoded().write(to: url, options: .atomic) } catch { alert(error.localizedDescription) } }
-    @objc private func importConfig() { let panel = NSOpenPanel(); panel.allowedContentTypes = [.json]; guard panel.runModal() == .OK, let url = panel.url else { return }; do { let value = try JSONDecoder().decode(KartOSConfig.self, from: Data(contentsOf: url)); try store.replace(value); reload() } catch { alert(error.localizedDescription) } }
-    private func alert(_ message: String) { let a = NSAlert(); a.messageText = "kart-os"; a.informativeText = message; a.runModal() }
+    @objc private func exportConfig() { let panel = NSSavePanel(); panel.nameFieldStringValue = "a-la-kart-config.json"; guard panel.runModal() == .OK, let url = panel.url else { return }; do { try store.encoded().write(to: url, options: .atomic) } catch { alert(error.localizedDescription) } }
+    @objc private func importConfig() { let panel = NSOpenPanel(); panel.allowedContentTypes = [.json]; guard panel.runModal() == .OK, let url = panel.url else { return }; do { let value = try JSONDecoder().decode(ALaKartConfig.self, from: Data(contentsOf: url)); try store.replace(value); reload() } catch { alert(error.localizedDescription) } }
+    private func alert(_ message: String) { let a = NSAlert(); a.messageText = "A la Kart"; a.icon = NSApp.applicationIconImage; a.informativeText = message; a.runModal() }
 }
