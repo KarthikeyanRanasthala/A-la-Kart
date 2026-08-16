@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Xcode user data and build products
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# OpenCode dependencies
+.opencode/node_modules/
+
+# Logs
+*.log

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openai/gpt-5.6-sol",
+  "default_agent": "orchestrator",
+  "agent": {
+    "orchestrator": {
+      "description": "Primary orchestrator that analyzes work, makes technical decisions, and delegates implementation.",
+      "mode": "primary",
+      "model": "openai/gpt-5.6-sol",
+      "permission": {
+        "task": {
+          "*": "deny",
+          "implementer": "allow"
+        }
+      }
+    },
+    "implementer": {
+      "description": "Implementation subagent for coding, testing, and reporting completed changes.",
+      "mode": "subagent",
+      "model": "openai/gpt-5.6-luna",
+      "hidden": true,
+      "permission": {
+        "task": "deny"
+      }
+    }
+  }
+}
