@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleDevelopmentRegion</key><string>en</string>
+<key>CFBundleExecutable</key><string>$(EXECUTABLE_NAME)</string>
+<key>CFBundleIdentifier</key><string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+<key>CFBundleName</key><string>kart-os</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleDisplayName</key><string>kart-os</string>
+<key>CFBundleShortVersionString</key><string>1.0</string>
+<key>CFBundleVersion</key><string>1</string>
+<key>LSMinimumSystemVersion</key><string>13.0</string>
+<key>NSPrincipalClass</key><string>NSApplication</string>
+<key>CFBundleDocumentTypes</key><array><dict>
+<key>CFBundleTypeExtensions</key><array><string>html</string><string>htm</string></array>
+<key>CFBundleTypeMIMETypes</key><array><string>text/html</string></array>
+<key>LSItemContentTypes</key><array><string>public.html</string></array>
+<key>CFBundleTypeName</key><string>HTML document</string>
+<key>CFBundleTypeRole</key><string>Viewer</string>
+<key>LSHandlerRank</key><string>Alternate</string>
+</dict><dict>
+<key>CFBundleTypeExtensions</key><array><string>xhtml</string></array>
+<key>CFBundleTypeMIMETypes</key><array><string>application/xhtml+xml</string></array>
+<key>LSItemContentTypes</key><array><string>public.xhtml</string></array>
+<key>CFBundleTypeName</key><string>XHTML document</string>
+<key>CFBundleTypeRole</key><string>Viewer</string>
+<key>LSHandlerRank</key><string>Alternate</string>
+</dict></array>
+<key>CFBundleURLTypes</key><array><dict>
+<key>CFBundleURLName</key><string>HTTP web links</string>
+<key>CFBundleTypeRole</key><string>Editor</string>
+<key>LSHandlerRank</key><string>Owner</string>
+<key>CFBundleURLSchemes</key><array><string>http</string></array>
+</dict><dict>
+<key>CFBundleURLName</key><string>HTTPS web links</string>
+<key>CFBundleTypeRole</key><string>Editor</string>
+<key>LSHandlerRank</key><string>Owner</string>
+<key>CFBundleURLSchemes</key><array><string>https</string></array>
+</dict></array>
+<key>LSUIElement</key><true/>
+</dict></plist>

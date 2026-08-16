@@ -5,9 +5,11 @@ final class MenuController: NSObject, NSMenuDelegate {
     private let portsMenu = NSMenu(title: "Ports")
     private let service: PortDiscovering
     private let signaler = ProcessSignaler()
-    private let defaults = UserDefaults.standard
+    let configStore: ConfigStore
+    private var settingsController: SettingsWindowController?
+    private var configObserver: NSObjectProtocol?
+    private weak var confirmationItem: NSMenuItem?
     private var timer: Timer?
-    private let confirmKey = "confirmBeforeKilling"
     private var ports: [Port] = []
     private var refreshInFlight = false
     private var hasLoadedPorts = false
@@ -15,13 +17,17 @@ final class MenuController: NSObject, NSMenuDelegate {
     private var discoveryFailed = false
     private var pendingRefresh: PendingRefresh?
 
-    init(statusItem: NSStatusItem, service: PortDiscovering = LsofService()) {
+    init(statusItem: NSStatusItem, service: PortDiscovering = LsofService(), configStore: ConfigStore = ConfigStore()) {
         self.service = service
+        self.configStore = configStore
         super.init()
+        configObserver = NotificationCenter.default.addObserver(forName: ConfigStore.didChange, object: configStore, queue: .main) { [weak self] _ in
+            self?.confirmationItem?.state = self?.configStore.config.ports.confirmBeforeKilling == true ? .on : .off
+        }
         portsMenu.autoenablesItems = false
         menu.delegate = self
 
-        portsMenu.addItem(NSMenuItem(title: "Loading…", action: nil, keyEquivalent: ""))
+        rebuildPortsMenu()
         let portsItem = NSMenuItem(); portsItem.title = "Ports"; portsItem.submenu = portsMenu; menu.addItem(portsItem)
         addStaticControls()
         refresh()
@@ -98,6 +104,16 @@ final class MenuController: NSObject, NSMenuDelegate {
         guard !isMenuTracking else { return }
         portsMenu.removeAllItems()
 
+        let refreshItem = NSMenuItem(title: "Refresh", action: #selector(refresh), keyEquivalent: "")
+        refreshItem.target = self
+        portsMenu.addItem(refreshItem)
+        let confirm = NSMenuItem(title: "Confirm Before Killing", action: #selector(toggleConfirmation(_:)), keyEquivalent: "")
+        confirm.target = self
+        confirm.state = configStore.config.ports.confirmBeforeKilling ? .on : .off
+        portsMenu.addItem(confirm)
+        confirmationItem = confirm
+        portsMenu.addItem(NSMenuItem.separator())
+
         if !hasLoadedPorts {
             let stateTitle = discoveryFailed ? "Unable to read ports" : "Loading…"
             let state = NSMenuItem(title: stateTitle, action: nil, keyEquivalent: "")
@@ -124,7 +140,7 @@ final class MenuController: NSObject, NSMenuDelegate {
             detail.autoenablesItems = false
 
             let friendly = app?.localizedName ?? port.processName
-            let info = NSMenuItem(); info.title = "\(friendly) · \(port.endpoint)"; info.image = app?.icon; info.isEnabled = false
+            let info = NSMenuItem(); info.title = "\(friendly) · \(port.endpoint)"; info.isEnabled = false
             detail.addItem(info)
             detail.addItem(NSMenuItem.separator())
 
@@ -133,20 +149,16 @@ final class MenuController: NSObject, NSMenuDelegate {
             let force = NSMenuItem(); force.title = "Force Kill (SIGKILL)"; force.action = #selector(terminate(_:)); force.target = self; force.representedObject = Action(port: port, force: true); force.isEnabled = allowed
             detail.addItem(force)
 
-            let item = NSMenuItem(); item.title = port.title; item.submenu = detail; item.image = app?.icon; item.toolTip = port.endpoint
+            let item = NSMenuItem(); item.title = port.title; item.submenu = detail; item.toolTip = port.endpoint
             portsMenu.addItem(item)
         }
     }
 
     private func addStaticControls() {
-        menu.addItem(NSMenuItem.separator())
-        let refreshItem = NSMenuItem(title: "Refresh", action: #selector(refresh), keyEquivalent: "r")
-        refreshItem.target = self
-        menu.addItem(refreshItem)
-        let confirm = NSMenuItem(title: "Confirm Before Killing", action: #selector(toggleConfirmation(_:)), keyEquivalent: "")
-        confirm.target = self
-        confirm.state = defaults.object(forKey: confirmKey) == nil || defaults.bool(forKey: confirmKey) ? .on : .off
-        menu.addItem(confirm)
+        let settings = NSMenuItem(title: "URL Routing Settings…", action: #selector(openSettings), keyEquivalent: "")
+        settings.target = self
+        settings.image = NSImage(systemSymbolName: "arrow.triangle.branch", accessibilityDescription: "URL Routing")
+        menu.addItem(settings)
         menu.addItem(NSMenuItem.separator())
         let quit = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
         quit.target = self
@@ -154,13 +166,16 @@ final class MenuController: NSObject, NSMenuDelegate {
     }
 
     @objc private func toggleConfirmation(_ item: NSMenuItem) {
-        item.state = item.state == .on ? .off : .on
-        defaults.set(item.state == .on, forKey: confirmKey)
+        var updated = configStore.config
+        updated.ports.confirmBeforeKilling = item.state != .on
+        do { try configStore.replace(updated) } catch {
+            let alert = NSAlert(); alert.messageText = "Could not save settings"; alert.informativeText = error.localizedDescription; alert.runModal()
+        }
     }
 
     @objc private func terminate(_ item: NSMenuItem) {
         guard let action = item.representedObject as? Action else { return }
-        if defaults.object(forKey: confirmKey) == nil || defaults.bool(forKey: confirmKey) {
+        if configStore.config.ports.confirmBeforeKilling {
             let alert = NSAlert()
             alert.messageText = action.force ? "Force kill process?" : "Terminate process?"
             alert.informativeText = "Send SIG\(action.force ? "KILL" : "TERM") to \(action.port.processName) (PID \(action.port.pid))?"
@@ -180,6 +195,15 @@ final class MenuController: NSObject, NSMenuDelegate {
     }
 
     @objc private func quit() { NSApplication.shared.terminate(nil) }
+
+    deinit { if let configObserver { NotificationCenter.default.removeObserver(configObserver) } }
+
+    @objc private func openSettings() {
+        if settingsController == nil { settingsController = SettingsWindowController(store: configStore) }
+        settingsController?.showWindow(nil)
+        settingsController?.window?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
 
     private final class Action {
         let port: Port

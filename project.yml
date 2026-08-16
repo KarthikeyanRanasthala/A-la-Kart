@@ -15,8 +15,8 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: sh.karthikeyan.kart-os
-        INFOPLIST_KEY_LSUIElement: true
-        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_FILE: Sources/kart-os/Info.plist
+        GENERATE_INFOPLIST_FILE: false
   kart-osTests:
     type: bundle.unit-test
     platform: macOS

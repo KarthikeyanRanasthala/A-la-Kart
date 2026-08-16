@@ -11,6 +11,7 @@ xcuserdata/
 
 # Swift Package Manager
 .build/
+.build-local/
 .swiftpm/
 
 # OpenCode dependencies
